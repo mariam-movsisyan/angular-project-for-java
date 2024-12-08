@@ -1,0 +1,73 @@
+<div class="language">
+    <button (click)="setTranslations(language.ENGLISH)">English</button>
+    <button (click)="setTranslations(language.ARMENIAN)">Հայերեն</button>
+</div>
+<div>
+    <h2 class="text-uppercase text-center mb-5">
+        {{ 'REGISTRATION.REGISTRATION' | translate }}
+    </h2>
+    <form [formGroup]="signUpForm">
+        <!-- First Name -->
+        <label>
+            <p class="label-txt">{{ 'COMMON.FIRST_NAME' | translate }}</p>
+            <input type="text" class="input" formControlName="firstName" (blur)="checkFieldErrors('firstName')" />
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            <div *ngIf="errors['firstName']" class="error-message">
+                {{ errors['firstName'].message | translate }}
+            </div>
+        </label>
+
+        <!-- Last Name -->
+        <label>
+            <p class="label-txt">{{ 'COMMON.LAST_NAME' | translate }}</p>
+            <input type="text" class="input" formControlName="lastName" (blur)="checkFieldErrors('lastName')" />
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            <div *ngIf="errors['lastName']" class="error-message">
+                {{ errors['lastName'].message | translate }}
+            </div>
+        </label>
+
+        <!-- Email -->
+        <label>
+            <p class="label-txt">{{ 'COMMON.EMAIL' | translate }}</p>
+            <input type="email" class="input" formControlName="email" (blur)="checkFieldErrors('email')" />
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            <div *ngIf="errors['email']" class="error-message">
+                {{ errors['email'].message | translate }}
+            </div>
+        </label>
+
+        <!-- Password -->
+        <label>
+            <p class="label-txt">{{ 'COMMON.PASSWORD' | translate }}</p>
+            <input type="password" class="input" formControlName="password" (blur)="checkFieldErrors('password')" />
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            <div *ngIf="errors['password']" class="error-message">
+                {{ errors['password'].message | translate }}
+            </div>
+        </label>
+
+        <button type="submit" (click)="signUp()">
+            {{ 'REGISTRATION.REGISTRATION' | translate }}
+        </button>
+        <div *ngIf="errors['form']" class="error-message error1">
+            {{ "COMMON.ERRORS.USER_EXISTS" | translate }}
+        </div>
+        <div class="center mt-2">
+            <p>
+                {{ 'LOGIN.ACCOUNT' | translate }}
+                <a (click)="setActivePage(availablePages.LOGIN)" class="text-decoration-none">
+                    {{ 'LOGIN.LOGIN' | translate }}
+                </a>
+            </p>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,49 @@
+<div class="language">
+    <button (click)="setTranslations(language.ENGLISH)">English</button>
+    <button (click)="setTranslations(language.ARMENIAN)">Հայերեն</button>
+</div>
+<div>
+    <h2 class="text-uppercase text-center mb-5">
+        {{ 'LOGIN.LOGIN' | translate }}
+    </h2>
+    <form [formGroup]="signInForm">
+        <!-- Email -->
+        <label>
+            <p class="label-txt">{{ 'COMMON.EMAIL' | translate }}</p>
+            <input type="email" class="input" formControlName="email" (blur)="checkFieldErrors('email')" />
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            <div *ngIf="errors['email']" class="error-message">
+                {{ errors['email'].message | translate }}
+            </div>
+        </label>
+
+        <!-- Password -->
+        <label>
+            <p class="label-txt">{{ 'COMMON.PASSWORD' | translate }}</p>
+            <input type="password" class="input" formControlName="password" (blur)="checkFieldErrors('password')" />
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            <div *ngIf="errors['password']" class="error-message">
+                {{ errors['password'].message | translate }}
+            </div>
+        </label>
+
+        <button type="submit" (click)="signIn()">
+            {{ 'LOGIN.LOGIN' | translate }}
+        </button>
+        <div *ngIf="errors['form']" class="error-message error1">
+            {{ "COMMON.ERRORS.WRONG_CREDENTIALS" | translate }}
+        </div>
+        <div class="center mt-2">
+            <p>
+                {{ 'REGISTRATION.MEMBER' | translate }}
+                <a (click)="setActivePage(availablePages.REGISTRATION)" class="text-decoration-none">
+                    {{ 'REGISTRATION.REGISTRATION' | translate }}
+                </a>
+            </p>
+        </div>
+    </form>
+</div>
